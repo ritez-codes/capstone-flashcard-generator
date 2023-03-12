@@ -1,0 +1,48 @@
+.app-container {
+  width: 80%;
+  margin: 20px auto;
+  /* border: 2px solid greenyellow; */
+  padding: 10px 0;
+  /* background-color: #fff; */
+}
+
+/* styling for when the navlink is active */
+.active {
+  border-bottom: 3px solid #e95e5e;
+  color: #e95e5e;
+}
+
+/* styling group and term container */
+.group-container,
+.term-container {
+  box-shadow: 0 0 10px rgba(47, 44, 44, 0.672);
+}
+
+/* term form */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 7fr 8fr 3fr;
+  gap: 20px;
+}
+
+input,
+textarea {
+  padding-left: 2px;
+}
+
+/* flashcard page styles  */
+.flashcards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+.flashcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+}
+
+.avatar {
+  background-color: rgb(216, 173, 116);
+}
