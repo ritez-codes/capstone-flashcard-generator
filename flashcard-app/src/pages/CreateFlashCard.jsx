@@ -104,8 +104,8 @@ function CreateFlashCard() {
                          <IoIosAdd color='blue' />  Add more</div>
                </div>
 
-               <div className='btn-group flex justify-center items-center my-10'>
-                    <button type='submit' className='create-btn px-12 rounded-md py-2 bg-red-600 text-slate-100'>Create</button>
+               <div className='btn-group flex justify-center items-center my-7'>
+                    <button type='submit' className='hover:opacity-80 transition-all create-btn px-12 rounded-md py-2 bg-red-600 text-white font-bold'>Create</button>
                </div>
           </form>
      )

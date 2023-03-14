@@ -5,6 +5,7 @@ import { FaShare } from "react-icons/fa";
 import { BsArrowLeft } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { FiShare2 } from "react-icons/fi";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { HiOutlineClipboard, HiOutlineClipboardCheck } from "react-icons/hi";
 import CopyToClipboard from 'react-copy-to-clipboard';
 
@@ -35,12 +36,13 @@ function FlashCardDetails() {
      const [iscopied, setIsCopied] = useState(false);
 
      // destructuring params passed in route...
-     const { id } = useParams();
+     const { id, index } = useParams();
 
      useEffect(() => {
           const filteredFlashCard = flashcard.find((item, index) => {
                return item._id === id;
           })
+          navigate(`/flashcard/detail/${id}/0`)
           setDetailingFlashCard(filteredFlashCard);
      }, [])
 
@@ -72,19 +74,45 @@ function FlashCardDetails() {
                                    <div className='detail-navlinks pl-5 gap-6 mt-5 flex flex-col font-semibold justify-start items-start'>
                                         {
                                              detailingFlashCard.cards.map((card, index) => {
-                                                  return <NavLink className={"font-semibold"} to={`/flashcard/detail/${id}/${index}`} >
+                                                  return <NavLink key={index.toString()} className={"font-semibold"} to={`/flashcard/detail/${id}/${index}`} >
                                                        {card.term}
                                                   </NavLink>
                                              })
                                         }
                                    </div>
-
                               </aside>
 
 
                               {/* detailed card section */}
-                              <div className='shadow rounded-md text-md bg-white section h-72'>
-                                   <Outlet />
+                              <div className=''>
+                                   <div className='shadow rounded-md text-md bg-white section h-72'>
+                                        <Outlet />
+                                   </div>
+                                   <div className='paginate mt-8'>
+                                        <div className='flex justify-center items-center gap-6'>
+                                             <button type='button' onClick={() => {
+                                                  if (index > 0) {
+                                                       let i = index
+                                                       i--;
+                                                       navigate(`/flashcard/detail/${id}/${i}`)
+                                                  }
+                                             }} className='cursor-pointer'>
+                                                  <IoIosArrowBack size={"30"} />
+                                             </button>
+
+                                             <span className='text-lg'>{Number(index) + 1}/{detailingFlashCard.cards.length}</span>
+
+                                             <button type='button' disabled={detailingFlashCard.cards.length - 1 > index ? false : true} onClick={() => {
+                                                  if (index !== detailingFlashCard.cards.length - 1) {
+                                                       let i = index;
+                                                       i++;
+                                                       navigate(`/flashcard/detail/${id}/${i}`);
+                                                  }
+                                             }} className='cursor-pointer'>
+                                                  <IoIosArrowForward size={"30"} />
+                                             </button>
+                                        </div>
+                                   </div>
                               </div>
 
 
