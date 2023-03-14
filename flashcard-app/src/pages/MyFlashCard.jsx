@@ -7,10 +7,10 @@ function MyFlashCard() {
      // console.log(flashCards);
 
      return (
-          <div className='flashcards my-10'>
+          <div className='flashcards my-10 text-slate-600'>
                {
                     flashCards.map((flashcard, index) => {
-                         return <FlashCard flashcard={flashcard} />
+                         return <FlashCard key={index.toString()} flashcard={flashcard} />
                     })
                }
           </div>

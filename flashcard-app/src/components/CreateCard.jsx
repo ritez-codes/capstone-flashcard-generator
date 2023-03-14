@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MdDeleteOutline, } from "react-icons/md";
 import { TbEdit } from "react-icons/tb";
 
 const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel }) => {
+
+     const inputTermRef = useRef();
 
      const handleTermInput = (passedIndex, event) => {
           let TotalCards = [...cardInputs];
@@ -19,7 +21,7 @@ const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel
           // console.log(cardInputs)
      }
 
-     return <div className='term-form grid my-3 mx-2 h-24 '>
+     return <div className='term-form grid mb-10 md:my-3 md:border-none border-b p-3 mx-2'>
 
           <div className='text-center'>
                <span className='py-1 px-3 text-white bg-red-500 rounded-full'>
@@ -30,34 +32,37 @@ const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel
           <div className="form-group">
                <label htmlFor="term">Enter Term*</label>
                <br />
-               <input value={cardInputs[index].term} onChange={(e) => {
+               <input minLength={"5"} maxLength="25" required autoComplete="off" ref={inputTermRef} value={cardInputs[index].term} onChange={(e) => {
                     handleTermInput(index, e)
-               }} className='bg-transparent w-full h-10 border-2' type="text" placeholder='enter term' />
+               }} className='bg-transparent w-2/3 md:w-full h-10 ' type="text" placeholder='enter term' />
           </div>
 
           <div className="form-group">
                <label htmlFor="definition">Enter Definition*</label>
                <br />
-               <textarea value={cardInputs[index].definition} onChange={(event) => {
+               <textarea autoComplete="off" maxLength={"200"} minLength={"10"} required value={cardInputs[index].definition} onChange={(event) => {
                     handleDefinitionInput(index, event)
-               }} className=' bg-transparent w-full h-3/4 border-2' type="text" placeholder='enter definition' />
+               }} className=' bg-transparent w-full h-3/4' type="text" placeholder='enter definition' />
           </div>
 
           {/* select image */}
           {/* <div className="form-group">
                <br />
-               <input className='cursor-pointer bg-transparent w-full h-10 border-2' type="button" value={"Select Image"} />
+               <input className='cursor-pointer bg-transparent w-full h-10 ' type="button" value={"Select Image"} />
           </div> */}
 
-          <div className='action-btns flex flex-col items-center gap-3 justify-center '>
+          <div className='action-btns flex md:flex-col items-center gap-3 justify-center '>
                <br />
-               <div className='del-btn cursor-pointer' onClick={() => {
+               <button type="button" disabled={cardInputs.length > 1 ? false : true} className='del-btn cursor-pointer' onClick={() => {
+
                     handleCardDel(index);
                }} >
                     <MdDeleteOutline color='blue' size={"25"} />
-               </div>
+               </button>
 
-               <div className='edit-btn cursor-pointer'>
+               <div onClick={() => {
+                    inputTermRef.current.focus();
+               }} className='edit-btn cursor-pointer'>
                     <TbEdit color='blue' size={"25"} />
                </div>
           </div>

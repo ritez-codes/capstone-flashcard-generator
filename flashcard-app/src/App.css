@@ -15,7 +15,7 @@
 /* styling group and term container */
 .group-container,
 .term-container {
-  box-shadow: 0 0 10px rgba(47, 44, 44, 0.672);
+  box-shadow: 0 0 10px #2f2c2cab;
 }
 
 /* term form */
@@ -25,9 +25,16 @@
   gap: 20px;
 }
 
+/* box shadow */
+.shadow {
+  box-shadow: 0 0 10px #2f2c2cab;
+}
+
 input,
 textarea {
   padding-left: 2px;
+  border: 0.5px solid black;
+  border-radius: 4px;
 }
 
 /* flashcard page styles  */
@@ -39,10 +46,54 @@ textarea {
 .flashcard {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: start;
+  justify-content: space-around;
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .avatar {
-  background-color: rgb(216, 173, 116);
+  background-color: #d8ad74;
+}
+
+.detail-main {
+  display: grid;
+  grid-template-columns: 1fr 1.9fr 0.8fr;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.detail-navlinks .active {
+  color: red;
+  border: none;
+}
+
+.detailcard {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+/* mediaquery for mobile device */
+
+@media screen and (max-width: 950px) {
+  .flashcards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .detail-main {
+    grid-template-columns: 1fr;
+  }
+  .dialog {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .app-container {
+    width: 90%;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flashcards {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,4 +1,4 @@
-import { CREATE_FLASHCARD, DELETE_FLAHCARD } from "./constant";
+import { CREATE_FLASHCARD, DELETE_FLAHCARD, SET_FLASHCARD } from "./constant";
 
 export const createFlashCard = (payload) => {
   return {
@@ -10,6 +10,13 @@ export const createFlashCard = (payload) => {
 export const deleteFlashCard = (payload) => {
   return {
     type: DELETE_FLAHCARD,
+    payload: payload,
+  };
+};
+
+export const setFlashCard = (payload) => {
+  return {
+    type: SET_FLASHCARD,
     payload: payload,
   };
 };
