@@ -55,7 +55,7 @@ function FlashCardDetails() {
                <Fragment>
                     <div className='detail-page text-slate-600 mt-5'>
                          {/* detail page head section */}
-                         <div className='detail-head h-24'>
+                         <div className='detail-head my-2'>
                               <button onClick={() => {
                                    navigate("/flashcard");
                               }} className='capitalize text-xl flex justify-start items-center gap-3 text-black font-bold' >
@@ -85,7 +85,7 @@ function FlashCardDetails() {
 
                               {/* detailed card section */}
                               <div className=''>
-                                   <div className='shadow rounded-md text-md bg-white section h-72'>
+                                   <div className='shadow rounded-md text-md bg-white section overflow-y-scroll overflow-x-hidden h-80'>
                                         <Outlet />
                                    </div>
                                    <div className='paginate mt-8'>

@@ -20,13 +20,20 @@ function App() {
   }, []);
 
   return (
-    <div className="app-container">
-      {/* app title */}
-      <h1 className="text-xl font-bold">Create Flashcard</h1>
-      {/* navbar  */}
-      <Navbar />
-      {/* main layout */}
-      <Layout />
+    <div>
+      {/* brand name */}
+      <div className="header">
+        <img className="brand-img" src="/alma.png" alt="almabetter" />
+      </div>
+
+      <div className="app-container">
+        {/* app title */}
+        <h1 className="text-xl font-bold">Create Flashcard</h1>
+        {/* navbar  */}
+        <Navbar />
+        {/* main layout */}
+        <Layout />
+      </div>
     </div>
   );
 }

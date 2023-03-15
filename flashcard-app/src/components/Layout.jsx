@@ -14,7 +14,7 @@ function Layout() {
                          {/* nested route for each card  */}
                          <Route index path={`/flashcard/detail/:id/:index`} element={<DetailCard />} />
                     </Route>
-                    <Route path='*' element={<h1>Error</h1>} />
+                    <Route path='*' element={<h1>Error: 404 Not Found</h1>} />
                </Routes>
           </div>
      )

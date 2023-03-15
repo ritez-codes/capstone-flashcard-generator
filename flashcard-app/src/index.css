@@ -1,9 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* body */
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: #e0d8d2;
+}
+
+/* header style */
+.header {
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 5px grey;
+}
+
+/* brand image style */
+.brand-img {
+  width: 120px;
+  margin-left: 20px;
 }

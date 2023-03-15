@@ -4,8 +4,10 @@ import { TbEdit } from "react-icons/tb";
 
 const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel }) => {
 
+     // for focusing the term input , when click on edit button
      const inputTermRef = useRef();
 
+     // handling term input
      const handleTermInput = (passedIndex, event) => {
           let TotalCards = [...cardInputs];
           const { definition } = TotalCards[passedIndex]
@@ -13,6 +15,7 @@ const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel
           setCardInputs(TotalCards);
           // console.log(TotalCards);
      }
+     // handling definition input
      const handleDefinitionInput = (passedIndex, event) => {
           let TotalCards = [...cardInputs];
           const { term } = TotalCards[passedIndex]
@@ -32,7 +35,7 @@ const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel
           <div className="form-group">
                <label htmlFor="term">Enter Term*</label>
                <br />
-               <input minLength={"5"} maxLength="25" required autoComplete="off" ref={inputTermRef} value={cardInputs[index].term} onChange={(e) => {
+               <input minLength={"5"} maxLength="50" required autoComplete="off" ref={inputTermRef} value={cardInputs[index].term} onChange={(e) => {
                     handleTermInput(index, e)
                }} className='bg-transparent w-2/3 md:w-full h-10 ' type="text" placeholder='enter term' />
           </div>
@@ -40,7 +43,7 @@ const CreateCard = React.memo(({ cardInputs, setCardInputs, index, handleCardDel
           <div className="form-group">
                <label htmlFor="definition">Enter Definition*</label>
                <br />
-               <textarea autoComplete="off" maxLength={"200"} minLength={"10"} required value={cardInputs[index].definition} onChange={(event) => {
+               <textarea autoComplete="off" maxLength={"7000"} minLength={"5"} required value={cardInputs[index].definition} onChange={(event) => {
                     handleDefinitionInput(index, event)
                }} className=' bg-transparent w-full h-3/4' type="text" placeholder='enter definition' />
           </div>

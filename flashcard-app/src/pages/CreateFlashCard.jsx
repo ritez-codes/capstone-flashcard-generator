@@ -18,7 +18,10 @@ function CreateFlashCard() {
 
      // update localstorage everytime, when changes happen in redux store
      useEffect(() => {
-          localStorage.setItem("flashcards", JSON.stringify(flashcards));
+          // run only if there is an atleast one item flashcards
+          if (flashcards.length > 0) {
+               localStorage.setItem("flashcards", JSON.stringify(flashcards));
+          }
      }, [flashcards])
 
 
@@ -100,7 +103,7 @@ function CreateFlashCard() {
                               return <CreateCard key={index.toString()} index={index} setCardInputs={setCardInputs} cardInputs={cardInputs} handleCardDel={handleCardDel} values={values} handleChange={handleChange} handleBlur={handleBlur} errors={errors} />
                          })
                     }
-                    <div onClick={addMoreInputs} className=' text-blue-700 flex items-center ml-12 mt-3'>
+                    <div onClick={addMoreInputs} className='cursor-pointer text-blue-700 flex items-center ml-12 mt-3'>
                          <IoIosAdd color='blue' />  Add more</div>
                </div>
 
