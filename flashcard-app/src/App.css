@@ -100,3 +100,8 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+div:active,
+span:active {
+  outline: none;
+}

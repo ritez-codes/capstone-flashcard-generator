@@ -5,6 +5,6 @@ export const flashcardSchema = yup.object({
   description: yup
     .string()
     .min(10)
-    .max(5000)
+    .max(1000)
     .required("Write something in description"),
 });
